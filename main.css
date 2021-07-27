@@ -1,0 +1,11 @@
+.help {
+  background-color: #F7F7F7;
+  padding: .7em;
+  border: 1px solid #DDD;
+  border-radius: .25rem;
+}
+.info {
+  background-color: #FAFAFA;
+  padding-top: .25em;
+  padding-bottom: .25em;
+}

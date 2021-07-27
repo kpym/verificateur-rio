@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="stylesheet" href="main.css">
+
+  <title>Vérification RIO</title>
+</head>
+<body>
+  <div id="app" class="container" v-cloak>
+    <div class="jumbotron">
+      <h1>Vérificateur de code RIO</h1>
+    </div>
+    <div class="row">
+      <div class="form-group col-sm-12 col-md-6">
+        <label for="tel">Numéro de téléphone</label>
+        <input id="tel" v-model="tel" type="text" class="form-control" aria-label="Numéro de téléphone" class="form-control">
+      </div>
+      <div class="form-group col-sm-12 col-md-6">
+        <label for="rio">RIO</label>
+        <input id="rio" v-model="rio" type="text" class="form-control" placeholder="OOQRRRRRRCCC" aria-label="RIO" class="form-control">
+      </div>
+    </div>
+    <!-- ----------- messages d'erreur -------------- -->
+    <div v-if="rio && !tel" class="alert alert-warning" role="alert">
+      Pour pouvoir validé le code RIO il faut renseigner également le numéro de téléphone.
+    </div>
+    <div v-if="!okLenTel" class="alert alert-warning" role="alert">
+      Le numéro de téléphone doit comporter 10 chiffres.
+    </div>
+    <div v-if="!okLenRio" class="alert alert-warning" role="alert">
+      Le numéro RIO doit comporter 12 caractères.
+    </div>
+    <div v-if="ccc && abc && abc != ccc" class="alert alert-danger" role="alert">
+      Le code RIO n'est pas valable !
+      <div>
+        Le code de contrôle <b>{{ ccc }}</b> ne correspond pas au code calculé <b>{{ abc }}</b>.
+      </div>
+    </div>
+    <div v-if="ccc && abc && abc == ccc" class="alert alert-success" role="alert">
+      Le code RIO est pas valable.
+      <div>
+        Car le code de contrôle <b>{{ ccc }}</b> correspond bien au code calculé <b>{{ abc }}</b>.
+      </div>
+    </div>
+    <!-- ----------- fin des messages d'erreur -------------- -->
+    <div v-if="rio" class="container info">
+      <!-- ================================================== -->
+      <div class="row">
+        <div class="form-group col-sm-12 col-md-6">
+          <label for="oo">Identifiant opérateur (OO)</label>
+          <input id="oo" v-model="oo" type="text" class="form-control" aria-label="OO" maxlength="2">
+        </div>
+        <div class="col-sm-12  col-md-6">
+          <div v-if="oo" class="help">
+            Les deux premiers caractères du code RIO identifient&nbsp;:
+            <ul>
+              <li v-if="type">Le type de numéro: <b>{{ type}}</b>.</li>
+              <li v-if="operateur">L'opérateur téléphonique: <b>{{ operateur}}</b>.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <!-- ================================================== -->
+      <div class="row">
+        <div class="form-group col-sm-12 col-md-6">
+          <label for="q">Type de contrat (Q)</label>
+          <input id="q" v-model="q" type="text" class="form-control" aria-label="Q" maxlength="1">
+        </div>
+        <div class="col-sm-12  col-md-6">
+          <div v-if="q" class="help">
+            Le troisième caractère du code RIO identifie&nbsp;:
+            <ul>
+              <li v-if="q">Le type de contrat: <b>{{ qtype }}</b>.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <!-- ================================================== -->
+      <div class="row">
+        <div class="form-group col-sm-12 col-md-6">
+          <label for="rrrrrr">Numéro de contrat (RRRRRR)</label>
+          <input id="rrrrrr" v-model="rrrrrr" type="text" class="form-control" aria-label="RRRRRR" maxlength="6">
+        </div>
+        <div class="col-sm-12  col-md-6">
+          <div v-if="rrrrrr" class="help">
+            Les six caractères en position 4 à 9 du code RIO correspondent à un numéro attribué par l'opérateur.
+          </div>
+        </div>
+      </div>
+      <hr>
+      <!-- ================================================== -->
+      <div class="row">
+        <div class="form-group col-sm-12 col-md-6">
+          <label for="ccc">Code de contrôle (CCC)</label>
+          <input id="ccc" v-model="ccc" type="text" class="form-control" aria-label="CCC" maxlength="3">
+        </div>
+        <div class="col-sm-12  col-md-6">
+          <div v-if="ccc" class="help">
+            Les 3 derniers caractères du code RIO correspond à une somme de contrôle. Ce code est calulé à partir du numéro de téléphone et des 9 premiers caractères du code RIO attachés.
+            <div v-if="riotel">
+              Ainsi le code de contrôle est calculé à partir de <b>{{ riotel }}</b>.
+            </div>
+            <div v-if="abc && ccc && ccc==abc" class="alert alert-success" role="alert">
+              Ici le code {{ ccc }} correspond bien au code calculé <b>{{abc}}</b>.
+            </div>
+            <div v-if="abc && ccc && ccc!=abc" class="alert alert-danger" role="alert">
+              Ici le code <b>{{ ccc }}</b> ne correspond pas au code calculé <b>{{abc}}</b>!
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Les scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@1.0.28/dist/vue.min.js"></script>
+  <script src="operateurs.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
