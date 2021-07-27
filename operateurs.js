@@ -1,3 +1,6 @@
+// Sources :
+//  https://archives.arcep.fr/uploads/tx_gsavis/15-0347.pdf
+//  https://fr.wikipedia.org/wiki/Relev%C3%A9_d%27identit%C3%A9_op%C3%A9rateur
 operateurs = [
   {
     "type": "mobile",
