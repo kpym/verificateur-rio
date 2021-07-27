@@ -5,3 +5,7 @@ La page we du vérificateur est [kpym.github.io/verificateur-rio](https://kpym.g
 Cette page web utilise [Vue.js](https://vuejs.org/) (version 1) et [Bootstrap](https://getbootstrap.com/) (version 4).
 
 Le code qui permet de calculer le code de contrôle se trouve dans le fichier [rio.js](rio.js).
+
+## Licence
+
+[MIT](LICENSE)
