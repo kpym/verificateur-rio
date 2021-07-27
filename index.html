@@ -32,16 +32,16 @@
       Le numéro de téléphone doit comporter 10 chiffres.
     </div>
     <div v-if="!okLenRio" class="alert alert-warning" role="alert">
-      Le numéro RIO doit comporter 12 caractères.
+      Le code RIO doit comporter 12 caractères.
     </div>
     <div v-if="ccc && abc && abc != ccc" class="alert alert-danger" role="alert">
-      Le code RIO n'est pas valable !
+      <b>Le code RIO n'est pas valable !</b>
       <div>
         Le code de contrôle <b>{{ ccc }}</b> ne correspond pas au code calculé <b>{{ abc }}</b>.
       </div>
     </div>
     <div v-if="ccc && abc && abc == ccc" class="alert alert-success" role="alert">
-      Le code RIO est pas valable.
+      <b>Le code RIO est valable.</b>
       <div>
         Car le code de contrôle <b>{{ ccc }}</b> correspond bien au code calculé <b>{{ abc }}</b>.
       </div>
