@@ -40,12 +40,11 @@ var app = new Vue({
         this.ccc = newValue.substr(9,3);
       }
     },
-    okLenTel : function () {
-      return this.tel.length == 0 || this.tel.length == 10
+    okTel : function () {
+      return this.tel.length == 0 || /^[0-9]{10}$/.test(this.tel)
     },
-    okLenRio : function () {
-      rio = this.rio.replace(/\s/g, '');
-      return rio.length == 0 || rio.length == 12
+    okRio : function () {
+      return this.rio.length == 0 || /^[A-Z0-9+]{12}$/.test(this.rio)
     },
     operateur : function () {
       if (this.oo) {

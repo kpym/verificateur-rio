@@ -30,11 +30,11 @@
     <div v-if="rio && !tel" class="alert alert-warning" role="alert">
       Pour pouvoir validé le code RIO il faut renseigner également le numéro de téléphone.
     </div>
-    <div v-if="!okLenTel" class="alert alert-warning" role="alert">
+    <div v-if="!okTel" class="alert alert-warning" role="alert">
       Le numéro de téléphone doit comporter 10 chiffres.
     </div>
-    <div v-if="!okLenRio" class="alert alert-warning" role="alert">
-      Le code RIO doit comporter 12 caractères.
+    <div v-if="!okRio" class="alert alert-warning" role="alert">
+      Le code RIO doit comporter <b>12 caractères</b> parmi les lettres (majuscules) <code>ABCDEFGHIJKLMNOPQRSTUVWXYZ</code>, les chiffres <code>0123456789</code> et le symbole <code>+</code>. Les espaces sont ignorées.
     </div>
     <div v-if="ccc && abc && abc != ccc" class="alert alert-danger" role="alert">
       <b>Le code RIO n'est pas valable !</b>
@@ -49,6 +49,15 @@
       </div>
     </div>
     <!-- ----------- fin des messages d'erreur -------------- -->
+    <div v-if="!rio" class="container info">
+      <p>
+        Le code RIO est composé de <b>12 caractères</b> parmi les lettres (majuscules) <code>ABCDEFGHIJKLMNOPQRSTUVWXYZ</code>, les chiffres <code>0123456789</code> et le symbole <code>+</code>. Les espaces sont ignorées.
+      </p>
+      <ul>
+        <li>Les codes RIO pour les numéros mobiles commencent par un chiffre. </li>
+        <li>Les codes RIO pour les numéros fixes commencent par une lettre comprise entre <code>F</code> et <code>Z</code>.</li>
+      </ul>
+    </div>
     <div v-if="rio" class="container info">
       <!-- ================================================== -->
       <div class="row">
