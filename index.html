@@ -113,10 +113,10 @@
         </div>
         <div class="col-sm-12  col-md-6">
           <div v-if="ccc" class="help">
-            Les 3 derniers caractères du code RIO correspond à une somme de contrôle. Ce code est calulé à partir du numéro de téléphone et des 9 premiers caractères du code RIO attachés.
-            <div v-if="riotel">
+            Les 3 derniers caractères du code RIO correspondent à une somme de contrôle. Ce code est calulé à partir du numéro de téléphone et des 9 premiers caractères du code RIO attachés.
+            <span v-if="riotel">
               Ainsi le code de contrôle est calculé à partir de <b>{{ riotel }}</b>.
-            </div>
+            </span>
             <div v-if="abc && ccc && ccc==abc" class="alert alert-success" role="alert">
               Ici le code {{ ccc }} correspond bien au code calculé <b>{{abc}}</b>.
             </div>
