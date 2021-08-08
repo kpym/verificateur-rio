@@ -20,7 +20,7 @@ var app = new Vue({
   watch: {
     tel: function (val) {
       // On normalise le numéro de téléphone pour être de la forme 0XXXXXXXXX.
-      this.tel = val.replace(/\s/g, '').replace(/\+330?/g, '0').substr(0,10)
+      this.tel = val.replace(/[^0-9+]/g, '').replace(/\+330?/g, '0').substr(0,10)
     }
   },
   computed: {
