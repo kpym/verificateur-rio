@@ -102,7 +102,10 @@ if ('serviceWorker' in navigator) {
   window.addEventListener('load', async () => {
     // Try to register the service worker.
     try {
-      const reg = await navigator.serviceWorker.register('pwa_sw.js');
+      const reg = await navigator.serviceWorker.register(
+        '/verificateur-rio/pwa_sw.js',
+        {scope: '/verificateur-rio/'}
+      );
       console.log('PWA service worker registered! 😎', reg);
     } catch (err) {
       console.log('😥 PWA service worker registration failed: ', err);

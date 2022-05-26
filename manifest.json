@@ -1,8 +1,10 @@
 {
   "name": "Vérificateur de code RIO",
   "short_name": "RIO Check",
+  "description": "Vérificateur de code RIO en local, dans le navigateur, sans envoie des données sur un serveur. Auteur: kpym.",
   "display": "standalone",
-  "start_url": "/",
+  "scope": "/verificateur-rio/",
+  "start_url": "/verificateur-rio/",
   "theme_color": "#0084ff",
   "background_color": "#0070cd",
   "icons": [{

@@ -1,23 +1,23 @@
 // Choose a cache name
-const cacheName = 'riocheck-v1';
+const cacheName = 'riocheck-v2';
 // List the files to precache
 const precacheResources = [
-  '/',
-  'index.html',
-  'main.css',
-  'main.js',
-  'images/rio.svg',
-  'images/rio128.png',
-  'images/rio144.png',
-  'images/rio152.png',
-  'images/rio192.png',
-  'images/rio384.png',
-  'images/rio512.png',
-  'images/rio72.png',
-  'images/rio96.png',
-  'operateurs.js',
-  'vendor/bootstrap.min.css',
-  'vendor/vue.min.js'
+  '/verificateur-rio/',
+  '/verificateur-rio/index.html',
+  '/verificateur-rio/main.css',
+  '/verificateur-rio/main.js',
+  '/verificateur-rio/images/rio.svg',
+  '/verificateur-rio/images/rio128.png',
+  '/verificateur-rio/images/rio144.png',
+  '/verificateur-rio/images/rio152.png',
+  '/verificateur-rio/images/rio192.png',
+  '/verificateur-rio/images/rio384.png',
+  '/verificateur-rio/images/rio512.png',
+  '/verificateur-rio/images/rio72.png',
+  '/verificateur-rio/images/rio96.png',
+  '/verificateur-rio/operateurs.js',
+  '/verificateur-rio/vendor/bootstrap.min.css',
+  '/verificateur-rio/vendor/vue.min.js'
 ];
 
 // When the service worker is installing, open the cache and add the precache resources to it
