@@ -1,5 +1,5 @@
 // Choose a cache name
-const cacheName = 'riocheck-v2';
+const cacheName = 'riocheck-v3';
 // List the files to precache
 const precacheResources = [
   '/verificateur-rio/',
@@ -28,6 +28,17 @@ self.addEventListener('install', (event) => {
 
 self.addEventListener('activate', (event) => {
   console.log('Service worker activate event!');
+  event.waitUntil(
+    caches.keys().then(function(allCaches) {
+      return Promise.all(
+        allCaches.filter(function(name) {
+          return name != cacheName
+        }).map(function(name) {
+          return caches.delete(name);
+        })
+      );
+    })
+  );
 });
 
 // When there's an incoming fetch request, try and respond with a precached resource, otherwise fall back to the network
@@ -35,10 +46,8 @@ self.addEventListener('fetch', (event) => {
   console.log('Fetch intercepted for:', event.request.url);
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
-      if (cachedResponse) {
-        return cachedResponse;
-      }
-      return fetch(event.request);
+      // Cache first strategy
+      return cachedResponse || fetch(event.request);
     }),
   );
 });
