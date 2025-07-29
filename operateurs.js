@@ -322,6 +322,12 @@ operateurs = [
     "prefix": "68"
   },
   {
+    "type": "mobile",
+    "code": "",
+    "nom": "Unyc",
+    "prefix": "29"
+  },
+  {
     "type": "fixe",
     "code": "FRTE",
     "nom": "Orange",
